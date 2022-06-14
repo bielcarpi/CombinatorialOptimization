@@ -1,3 +1,4 @@
+import LabyrinthSolvers.BruteForceLabyrinthSolver;
 import edu.salleurl.arcade.Arcade;
 import edu.salleurl.arcade.ArcadeBuilder;
 
@@ -7,14 +8,14 @@ public class Main {
      * In order to modify the program execution, you can modify the following constants;
      * See the Method enum to know which solving methods are available
      */
-    private static final int LABYRINTH_COLUMNS = 24;
-    private static final int LABYRINTH_ROWS = 24;
+    private static final int LABYRINTH_COLUMNS = 9;
+    private static final int LABYRINTH_ROWS = 9;
     private static final int WORDS_COLUMNS = 12;
     private static final int WORDS_ROWS = 12;
 
     private static final SolvingMethod LABYRINTH_SOLVING_METHOD = SolvingMethod.BRUTE_FORCE;
     private static final SolvingMethod WORDS_SOLVING_METHOD = SolvingMethod.BRUTE_FORCE;
-    private static final int SEED = -1; //-1 if no seed wants to be used
+    private static final int SEED = 40; //-1 if no seed wants to be used
 
 
     public static void main(String[] args){
@@ -35,7 +36,7 @@ public class Main {
 
     private static void setLabyrinthSolver(ArcadeBuilder builder, SolvingMethod method){
         switch(method){
-            case BRUTE_FORCE -> builder.setLabyrinthSolver(null);
+            case BRUTE_FORCE -> builder.setLabyrinthSolver(new BruteForceLabyrinthSolver(true));
             case BACKTRACKING -> builder.setLabyrinthSolver(null);
             case BACKTRACKING_PBMSC -> builder.setLabyrinthSolver(null);
             case BRANCH_AND_BOUND -> builder.setLabyrinthSolver(null);
