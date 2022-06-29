@@ -8,8 +8,8 @@ public class Main {
      * In order to modify the program execution, you can modify the following constants;
      * See the Method enum to know which solving methods are available
      */
-    private static final int LABYRINTH_COLUMNS = 9;
-    private static final int LABYRINTH_ROWS = 9;
+    private static final int LABYRINTH_COLUMNS = 100;
+    private static final int LABYRINTH_ROWS = 100;
     private static final int WORDS_COLUMNS = 12;
     private static final int WORDS_ROWS = 12;
 
