@@ -63,6 +63,8 @@ public class BacktrackingPBMSCLabyrinthSolver extends AbstractLabyrinthSolver{
 
         outerLoop:
         while(true) {
+            super.render(cells, config);
+
             //If we're not in the solution yet, bruteForce again
             if(!cells[y][x].equals(Cell.EXIT)){
                 if(config.size() > (bestSolution == null? -1: bestSolution.size())) //PBMSC

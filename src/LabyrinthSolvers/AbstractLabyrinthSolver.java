@@ -13,6 +13,7 @@ public abstract class AbstractLabyrinthSolver implements LabyrinthSolver {
      * Whether graphics should be rendered or not.
      */
     private final boolean renderGraphics;
+    private LabyrinthRenderer lr;
 
     public AbstractLabyrinthSolver(boolean renderGraphics){
         this.renderGraphics = renderGraphics;
@@ -27,13 +28,18 @@ public abstract class AbstractLabyrinthSolver implements LabyrinthSolver {
 
     @Override
     public final List<Direction> solve(Cell[][] cells, LabyrinthRenderer labyrinthRenderer){
+        lr = labyrinthRenderer;
         long currentTime = System.currentTimeMillis();
         List<Direction> solution = solve(cloneCells(cells));
         long endTime = System.currentTimeMillis();
         System.out.println("The Labyrinth was solved in " + (endTime-currentTime) + " ms");
 
-        if(renderGraphics) labyrinthRenderer.render(cells, solution); //If we want to render the graphics, render them
+        lr.render(cells, solution, 1000); //If we want to render the graphics, render them
         return solution;
+    }
+
+    protected final void render(Cell[][] cells, List<Direction> partialSolution){
+        if(renderGraphics) lr.render(cells, partialSolution, 30); //If we want to render the graphics, render them
     }
 
 

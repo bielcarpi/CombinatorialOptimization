@@ -63,6 +63,8 @@ public class BacktrackingLabyrinthSolver extends AbstractLabyrinthSolver{
 
         outerLoop:
         while(true) {
+            super.render(cells, config);
+
             if(!cells[y][x].equals(Cell.EXIT)) //If we're not in the solution yet, bruteForce again
                 backtracking(x, y);
             else //Solution case

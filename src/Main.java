@@ -10,14 +10,15 @@ public class Main {
      * In order to modify the program execution, you can modify the following constants;
      * See the Method enum to know which solving methods are available
      */
-    private static final int LABYRINTH_COLUMNS = 190;
-    private static final int LABYRINTH_ROWS = 190;
+    private static final int LABYRINTH_COLUMNS = 90;
+    private static final int LABYRINTH_ROWS = 90;
     private static final int WORDS_COLUMNS = 12;
     private static final int WORDS_ROWS = 12;
 
-    private static final SolvingMethod LABYRINTH_SOLVING_METHOD = SolvingMethod.BRANCH_AND_BOUND;
+    private static final SolvingMethod LABYRINTH_SOLVING_METHOD = SolvingMethod.BACKTRACKING;
     private static final SolvingMethod WORDS_SOLVING_METHOD = SolvingMethod.BACKTRACKING;
     private static final int SEED = 40; //-1 if no seed wants to be used
+    private static final boolean stepRender = false;
     /**
      * -------------------------------------------------------------------------------
      * -------------------------------------------------------------------------------
@@ -42,9 +43,9 @@ public class Main {
 
     private static void setLabyrinthSolver(ArcadeBuilder builder, SolvingMethod method){
         switch(method){
-            case BACKTRACKING -> builder.setLabyrinthSolver(new BacktrackingLabyrinthSolver(true));
-            case BACKTRACKING_PBMSC -> builder.setLabyrinthSolver(new BacktrackingPBMSCLabyrinthSolver(true));
-            case BRANCH_AND_BOUND -> builder.setLabyrinthSolver(new BranchAndBoundLabyrinthSolver(true));
+            case BACKTRACKING -> builder.setLabyrinthSolver(new BacktrackingLabyrinthSolver(stepRender));
+            case BACKTRACKING_PBMSC -> builder.setLabyrinthSolver(new BacktrackingPBMSCLabyrinthSolver(stepRender));
+            case BRANCH_AND_BOUND -> builder.setLabyrinthSolver(new BranchAndBoundLabyrinthSolver(stepRender));
         }
     }
     private static void setWordsSolver(ArcadeBuilder builder, SolvingMethod method){

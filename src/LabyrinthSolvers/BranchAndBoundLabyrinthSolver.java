@@ -29,6 +29,7 @@ public class BranchAndBoundLabyrinthSolver extends AbstractLabyrinthSolver{
 
         while(!queue.isEmpty()){
             LabyrinthConfig config = queue.poll();
+            super.render(cells, config.getConfig());
             Iterable<LabyrinthConfig> successors = config.expand();
 
             for(LabyrinthConfig successor: successors){
