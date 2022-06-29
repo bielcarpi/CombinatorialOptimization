@@ -1,4 +1,6 @@
-import LabyrinthSolvers.BruteForceLabyrinthSolver;
+import LabyrinthSolvers.BacktrackingLabyrinthSolver;
+import LabyrinthSolvers.BacktrackingPBMSCLabyrinthSolver;
+import LabyrinthSolvers.BranchAndBoundLabyrinthSolver;
 import edu.salleurl.arcade.Arcade;
 import edu.salleurl.arcade.ArcadeBuilder;
 
@@ -8,15 +10,19 @@ public class Main {
      * In order to modify the program execution, you can modify the following constants;
      * See the Method enum to know which solving methods are available
      */
-    private static final int LABYRINTH_COLUMNS = 100;
-    private static final int LABYRINTH_ROWS = 100;
+    private static final int LABYRINTH_COLUMNS = 190;
+    private static final int LABYRINTH_ROWS = 190;
     private static final int WORDS_COLUMNS = 12;
     private static final int WORDS_ROWS = 12;
 
-    private static final SolvingMethod LABYRINTH_SOLVING_METHOD = SolvingMethod.BRUTE_FORCE;
-    private static final SolvingMethod WORDS_SOLVING_METHOD = SolvingMethod.BRUTE_FORCE;
+    private static final SolvingMethod LABYRINTH_SOLVING_METHOD = SolvingMethod.BACKTRACKING_PBMSC;
+    private static final SolvingMethod WORDS_SOLVING_METHOD = SolvingMethod.BACKTRACKING;
     private static final int SEED = 40; //-1 if no seed wants to be used
-
+    /**
+     * -------------------------------------------------------------------------------
+     * -------------------------------------------------------------------------------
+     * -------------------------------------------------------------------------------
+     */
 
     public static void main(String[] args){
         System.out.println("P2 - Combinatorial Optimization");
@@ -36,15 +42,13 @@ public class Main {
 
     private static void setLabyrinthSolver(ArcadeBuilder builder, SolvingMethod method){
         switch(method){
-            case BRUTE_FORCE -> builder.setLabyrinthSolver(new BruteForceLabyrinthSolver(true));
-            case BACKTRACKING -> builder.setLabyrinthSolver(null);
-            case BACKTRACKING_PBMSC -> builder.setLabyrinthSolver(null);
-            case BRANCH_AND_BOUND -> builder.setLabyrinthSolver(null);
+            case BACKTRACKING -> builder.setLabyrinthSolver(new BacktrackingLabyrinthSolver(true));
+            case BACKTRACKING_PBMSC -> builder.setLabyrinthSolver(new BacktrackingPBMSCLabyrinthSolver(true));
+            case BRANCH_AND_BOUND -> builder.setLabyrinthSolver(new BranchAndBoundLabyrinthSolver(true));
         }
     }
     private static void setWordsSolver(ArcadeBuilder builder, SolvingMethod method){
         switch(method){
-            case BRUTE_FORCE -> builder.setWordsSolver(null);
             case BACKTRACKING -> builder.setWordsSolver(null);
             case BACKTRACKING_PBMSC -> builder.setWordsSolver(null);
             case BRANCH_AND_BOUND -> builder.setWordsSolver(null);

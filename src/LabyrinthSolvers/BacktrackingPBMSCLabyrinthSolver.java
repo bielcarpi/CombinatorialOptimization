@@ -6,7 +6,7 @@ import edu.salleurl.arcade.labyrinth.model.enums.Direction;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BruteForceLabyrinthSolver extends AbstractLabyrinthSolver{
+public class BacktrackingPBMSCLabyrinthSolver extends AbstractLabyrinthSolver{
 
     private final ArrayList<Direction> config; //Current config
     private ArrayList<Direction> bestSolution; //Best config
@@ -15,7 +15,7 @@ public class BruteForceLabyrinthSolver extends AbstractLabyrinthSolver{
     private final static int STARTING_X_COORD = 1; //Could be changed dynamically using a method that searches for the starting point
     private final static int STARTING_Y_COORD = 1;
 
-    public BruteForceLabyrinthSolver(boolean renderGraphics) {
+    public BacktrackingPBMSCLabyrinthSolver(boolean renderGraphics) {
         super(renderGraphics);
         config = new ArrayList<>();
     }
@@ -63,10 +63,14 @@ public class BruteForceLabyrinthSolver extends AbstractLabyrinthSolver{
 
         outerLoop:
         while(true) {
-            if(!cells[y][x].equals(Cell.EXIT)) //If we're not in the solution yet, bruteForce again
-                bruteForce(x, y);
-            else //Solution case
+            //If we're not in the solution yet, bruteForce again
+            if(!cells[y][x].equals(Cell.EXIT)){
+                if(config.size() > (bestSolution == null? -1: bestSolution.size())) //PBMSC
+                    bruteForce(x, y);
+            }
+            else{ //Solution case
                 checkSolution();
+            }
 
             //Next successor
             Direction d = config.get(config.size() - 1);
@@ -102,7 +106,6 @@ public class BruteForceLabyrinthSolver extends AbstractLabyrinthSolver{
                     break outerLoop; //If we're in DOWN, we already checked all possible options
                 }
             }
-
         }
 
 }
