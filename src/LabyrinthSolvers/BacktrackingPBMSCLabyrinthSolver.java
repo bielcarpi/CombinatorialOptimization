@@ -23,7 +23,7 @@ public class BacktrackingPBMSCLabyrinthSolver extends AbstractLabyrinthSolver{
     @Override
     protected List<Direction> solve(Cell[][] cells) {
         this.cells = cells;
-        bruteForce(STARTING_X_COORD, STARTING_Y_COORD);
+        backtrackingPBMSC(STARTING_X_COORD, STARTING_Y_COORD);
         return bestSolution;
     }
 
@@ -34,7 +34,7 @@ public class BacktrackingPBMSCLabyrinthSolver extends AbstractLabyrinthSolver{
             bestSolution = new ArrayList<>(config);
     }
 
-    private void bruteForce(int x, int y){
+    private void backtrackingPBMSC(int x, int y){
         cells[y][x] = Cell.WALL; //The last cell is a wall
 
         //Choose the next cell we'll explore (we can't explore a wall)
@@ -66,7 +66,7 @@ public class BacktrackingPBMSCLabyrinthSolver extends AbstractLabyrinthSolver{
             //If we're not in the solution yet, bruteForce again
             if(!cells[y][x].equals(Cell.EXIT)){
                 if(config.size() > (bestSolution == null? -1: bestSolution.size())) //PBMSC
-                    bruteForce(x, y);
+                    backtrackingPBMSC(x, y);
             }
             else{ //Solution case
                 checkSolution();

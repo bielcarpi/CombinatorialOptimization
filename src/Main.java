@@ -15,7 +15,7 @@ public class Main {
     private static final int WORDS_COLUMNS = 12;
     private static final int WORDS_ROWS = 12;
 
-    private static final SolvingMethod LABYRINTH_SOLVING_METHOD = SolvingMethod.BACKTRACKING_PBMSC;
+    private static final SolvingMethod LABYRINTH_SOLVING_METHOD = SolvingMethod.BRANCH_AND_BOUND;
     private static final SolvingMethod WORDS_SOLVING_METHOD = SolvingMethod.BACKTRACKING;
     private static final int SEED = 40; //-1 if no seed wants to be used
     /**
