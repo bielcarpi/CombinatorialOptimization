@@ -8,6 +8,7 @@ public abstract class AbstractWordsSolver implements WordsSolver {
      * Whether graphics should be rendered or not.
      */
     private final boolean renderGraphics;
+    private WordsRenderer wr;
 
     public AbstractWordsSolver(boolean renderGraphics){
         this.renderGraphics = renderGraphics;
@@ -23,12 +24,27 @@ public abstract class AbstractWordsSolver implements WordsSolver {
 
     @Override
     public final int[] solve(char[][] words, String needle, WordsRenderer wordsRenderer){
+        wr = wordsRenderer;
         long currentTime = System.currentTimeMillis();
         int[] solution = solve(words, needle);
         long endTime = System.currentTimeMillis();
-        System.out.println("The word was found in " + (endTime-currentTime)/1000.0 + " seconds");
+        System.out.println("The word was found in " + (endTime-currentTime) + "ms");
 
-        if(renderGraphics) wordsRenderer.render(words, needle, solution); //If we want to render the graphics, render them
+        wordsRenderer.render(words, needle, solution);
         return solution;
+    }
+
+    protected final void render(char[][] words, String needle, int[] partialSolution){
+        if(renderGraphics) wr.render(words, needle, partialSolution, 30); //If we want to render the graphics, render them
+    }
+
+
+    private char[][] cloneWords(char[][] words){
+        //Clone the words matrix
+        char[][] clone = words.clone();
+        for(int i = 0; i < clone.length; i++)
+            clone[i] = words[i].clone();
+
+        return clone;
     }
 }

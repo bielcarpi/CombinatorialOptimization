@@ -32,9 +32,9 @@ public abstract class AbstractLabyrinthSolver implements LabyrinthSolver {
         long currentTime = System.currentTimeMillis();
         List<Direction> solution = solve(cloneCells(cells));
         long endTime = System.currentTimeMillis();
-        System.out.println("The Labyrinth was solved in " + (endTime-currentTime) + " ms");
+        System.out.println("The Labyrinth was solved in " + (endTime-currentTime) + "ms");
 
-        lr.render(cells, solution, 1000); //If we want to render the graphics, render them
+        lr.render(cells, solution);
         return solution;
     }
 
