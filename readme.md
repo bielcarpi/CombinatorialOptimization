@@ -19,8 +19,18 @@
 
 ## Features
 - [x] Two problems to solve, Labyrinth & Letter Soup (with Graphical Interface)
-- [x] Solve them with Brute Force, Backtracking and Branch & Bound
+- [x] Solve them with Backtracking, Branch & Bound or using a Greedy approach
 - [x] Compare performance of the algorithms
+
+## How To Use
+```bash
+# Clone this repository
+$ git clone https://atlassian.salle.url.edu:7943/projects/PAED2122/repos/paed-2122-p2-g17
+
+# Open the project on IntelliJ and Run it (tested with Java 17)
+# On the main() there is a detailed explanation of how the program works, and what
+#  attributes can be modified so as to modify its execution.
+```
 
 <br>
 
