@@ -1,5 +1,6 @@
 public enum SolvingMethod {
     BACKTRACKING,
     BACKTRACKING_PBMSC,
-    BRANCH_AND_BOUND
+    BRANCH_AND_BOUND,
+    GREEDY
 }

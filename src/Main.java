@@ -2,7 +2,7 @@ import LabyrinthSolvers.BacktrackingLabyrinthSolver;
 import LabyrinthSolvers.BacktrackingPBMSCLabyrinthSolver;
 import LabyrinthSolvers.BranchAndBoundLabyrinthSolver;
 import WordsSolvers.BacktrackingWordsSolver;
-import WordsSolvers.BranchAndBoundWordsSolver;
+import WordsSolvers.GreedyWordsSolver;
 import edu.salleurl.arcade.Arcade;
 import edu.salleurl.arcade.ArcadeBuilder;
 
@@ -12,13 +12,13 @@ public class Main {
      * In order to modify the program execution, you can modify the following constants;
      * See the Method enum to know which solving methods are available
      */
-    private static final int LABYRINTH_COLUMNS = 30;
-    private static final int LABYRINTH_ROWS = 30;
+    private static final int LABYRINTH_COLUMNS = 25;
+    private static final int LABYRINTH_ROWS = 25;
     private static final int WORDS_COLUMNS = 30;
     private static final int WORDS_ROWS = 30;
 
     private static final SolvingMethod LABYRINTH_SOLVING_METHOD = SolvingMethod.BRANCH_AND_BOUND;
-    private static final SolvingMethod WORDS_SOLVING_METHOD = SolvingMethod.BACKTRACKING;
+    private static final SolvingMethod WORDS_SOLVING_METHOD = SolvingMethod.GREEDY;
     private static final int SEED = 46; //-1 if no seed wants to be used
     private static final boolean stepRender = true; //false if you don't want to see the process
     /**
@@ -54,8 +54,8 @@ public class Main {
     private static void setWordsSolver(ArcadeBuilder builder, SolvingMethod method){
         switch(method){
             case BACKTRACKING -> builder.setWordsSolver(new BacktrackingWordsSolver(stepRender));
-            case BRANCH_AND_BOUND -> builder.setWordsSolver(new BranchAndBoundWordsSolver(stepRender));
-            default -> System.err.println("Error. The Words Solver has to be either Backtracking or Branch and Bound.");
+            case GREEDY -> builder.setWordsSolver(new GreedyWordsSolver(stepRender));
+            default -> System.err.println("Error. The Words Solver has to be either Backtracking or Greedy.");
         }
     }
 }
