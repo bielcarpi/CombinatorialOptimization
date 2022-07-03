@@ -25,10 +25,10 @@ public abstract class AbstractWordsSolver implements WordsSolver {
     @Override
     public final int[] solve(char[][] words, String needle, WordsRenderer wordsRenderer){
         wr = wordsRenderer;
-        long currentTime = System.currentTimeMillis();
-        int[] solution = solve(words, needle);
-        long endTime = System.currentTimeMillis();
-        System.out.println("The word was found in " + (endTime-currentTime) + "ms");
+        long currentTime = System.nanoTime();
+        int[] solution = solve(cloneWords(words), needle);
+        long endTime = System.nanoTime();
+        System.out.println("The word was found in " + (endTime-currentTime)/1000000f + "ms");
 
         wordsRenderer.render(words, needle, solution);
         return solution;
