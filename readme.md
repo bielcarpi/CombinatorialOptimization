@@ -14,6 +14,9 @@
 
 <p align="center">
     Arcade is a University Project for practicing combinatorial optimization. We'll find solutions for two problems: A Labyrinth and a Letter Soup.
+<br>
+<br>
+    <img src="res/labyrinth.gif">
 </p>
 
 
@@ -25,7 +28,7 @@
 ## How To Use
 ```bash
 # Clone this repository
-$ git clone https://atlassian.salle.url.edu:7943/projects/PAED2122/repos/paed-2122-p2-g17
+$ git clone https://github.com/bielcarpi/CombinatorialOptimization.git
 
 # Open the project on IntelliJ and Run it (tested with Java 17)
 # On the main() there is a detailed explanation of how the program works, and what
@@ -34,5 +37,5 @@ $ git clone https://atlassian.salle.url.edu:7943/projects/PAED2122/repos/paed-21
 
 <br>
 
-#### Authors
-Biel Carpi (biel.carpi@students.salle.url.edu)
+### Authors
+Biel Carpi (biel.carpi@outlook.com)
